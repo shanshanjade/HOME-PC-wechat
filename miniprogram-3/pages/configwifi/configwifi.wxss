@@ -1,0 +1,15 @@
+
+.timing switch{
+  display: block;
+}
+.timing text,picker{
+  display: inline-block;
+}
+.wifi text,input{
+  display: inline-block;
+  margin-left: 5%;
+  margin-top: 5%;
+}
+.h12 radio{
+  margin-left: 12%;
+}

@@ -1,0 +1,159 @@
+<block wx:if="{{ timing_on }}">
+	<van-notice-bar
+		left-icon="clock"
+		text="定时任务已开启，将在{{ open_time }}打开时钟，在{{ close_time }}关闭时钟"
+	/>
+</block>
+<view class="kaiji_info">
+	<text decode>系统已经运行 {{days}}天  {{hours}}小时 {{minutes}}分钟&nbsp;</text>
+</view>
+
+<view class="swiper">
+	<swiper style="height: 200rpx; width: 700rpx; margin-top: 10rpx;" indicator-dots="true" circular="true"
+		bindchange="onSwiper_display_flag_Change">
+		<swiper-item>
+			<view style="background-color: brown; width: 100%; height: 200rpx; border-radius: 10rpx;"><text>显示时间</text>
+			</view>
+		</swiper-item>
+		<swiper-item>
+			<view style="background-color: green; width: 100%; height: 200rpx; border-radius: 10rpx;"><text>显示日期</text>
+			</view>
+		</swiper-item>
+		<swiper-item>
+			<view style="background-color: rgb(0, 101, 163); width: 100%; height: 200rpx; border-radius: 10rpx;">
+				<text>显示室温</text>
+			</view>
+		</swiper-item>
+		<swiper-item>
+			<view style="background-color: rgb(90, 0, 163); width: 100%; height: 200rpx; border-radius: 10rpx;">
+				<text>氛围灯</text>
+			</view>
+		</swiper-item>
+	</swiper>
+</view>
+
+
+<view class="colorpicker">
+	<slider
+		style="background-image:linear-gradient(to right,hsl(0, 100%, 50%), hsl(60, 100%, 50%), hsl(120, 100%, 50%), hsl(180, 100%, 50%), hsl(240, 100%, 50%), hsl(300, 100%, 50%), hsl(360, 100%, 50%) ); border-radius: 20rpx; margin-top: 30rpx;"
+		max="359" min="0" value="0" backgroundColor="transparent" activeColor="transparent"
+		block-color="hsl({{ H_value }}, 100%, 50%)" bindchanging="onHSL_H_changing" bindchange="onHSL_H_change" />
+	<slider
+		style="background-image:linear-gradient(to right,hsl({{ H_value }}, 100%, 0%), hsl({{ H_value }}, 100%, 50%) ,hsl({{ H_value }}, 100%, 100%) ); border-radius: 20rpx; margin-top: 30rpx;"
+		max="100" min="0" value="50" backgroundColor="transparent" activeColor="transparent"
+		block-color="hsl({{ H_value }}, 100%, {{ L_value }}%)" bindchanging="onHSL_L_changing"
+		bindchange="onHSL_L_change" />
+</view>
+<view class="info1"><text>选择指针改变颜色和亮度</text></view>
+<view class="container">
+	<view class="switch-container">
+		<view class="switch-text">
+			<switch data-name="switch1" checked="{{switch_value[0]}}" bindchange="onSwitchChange" />
+			<text>时针1</text>
+		</view>
+		<view class="switch-text">
+			<switch data-name="switch3" checked="{{switch_value[2]}}" bindchange="onSwitchChange" />
+			<text>分针1</text>
+		</view>
+		<view class="switch-text">
+			<switch data-name="switch5" checked="{{switch_value[4]}}" bindchange="onSwitchChange" />
+			<text>秒针1</text>
+		</view>
+		<view class="switch-text">
+			<switch data-name="switch2" checked="{{switch_value[1]}}" bindchange="onSwitchChange" />
+			<text>时针2</text>
+		</view>
+		<view class="switch-text">
+			<switch data-name="switch4" checked="{{switch_value[3]}}" bindchange="onSwitchChange" />
+			<text>分针2</text>
+		</view>
+		<view class="switch-text">
+			<switch data-name="switch6" checked="{{switch_value[5]}}" bindchange="onSwitchChange" />
+			<text>秒针2</text>
+		</view>
+	</view>
+	<view class="rev-button">
+		<button type="primary" style="width: 220rpx; height: 100rpx;" bindtap="tapRevers" id="rev-button">
+			<text>反选</text>
+		</button>
+		<button type="primary" style="width: 220rpx; height: 100rpx;" bindtap="tapUnified" id="uni-button">
+			<text>统一</text>
+		</button>
+	</view>
+</view>
+<view class="mode_turnPage_speed">
+	<view class="mode_turnPage">
+		<swiper style="height: 120rpx; width: 400rpx;"  vertical="true" circular="true"
+			bindchange="onSwiper_mode_flag_Change">
+			<swiper-item>
+				<view style="background-color: rgb(165, 42, 118); width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>同步流光模式</text>
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view style="background-color: green; width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>单色模式</text>
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view style="background-color: rgb(0, 101, 163); width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>渐变流光模式</text>
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view style="background-color: rgb(90, 0, 163); width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>同步跳色模式</text>
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view style="background-color: rgb(163, 92, 0); width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>渐变跳色模式</text>
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view style="background-color: rgb(163, 92, 0); width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>呼吸模式</text>
+				</view>
+			</swiper-item>
+		</swiper>
+		<swiper style="height: 120rpx; width: 400rpx;" vertical="true" circular="true"
+			bindchange="onSwiper_turnPage_flag_Change">
+			<swiper-item>
+				<view style="background-color: rgb(42, 165, 144); width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>翻页动画 〇</text>
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view style="background-color: green; width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>翻页动画 一</text>
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view style="background-color: rgb(0, 101, 163); width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>翻页动画 二</text>
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view style="background-color: rgb(90, 0, 163); width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>翻页动画 三</text>
+				</view>
+			</swiper-item>
+			<swiper-item>
+				<view style="background-color: rgb(163, 92, 0); width: 100%; height: 100%; border-radius: 10rpx;">
+					<text>翻页动画 四</text>
+				</view>
+			</swiper-item>
+		</swiper>
+	</view>
+	<view class="speed">
+		<button style=" width: 250rpx; height: 250rpx; border-radius: 50%;border: 10px solid rgb(0, 173, 144); margin: 0;padding: 0;" bindtap="tapSpeed"><text>调速:{{display_speed}}</text></button>
+	</view>
+</view>
+<view class="isOn">
+	<button type="primary" size="large" style=" width: 100%; height: {{ timing_on ? buttonHeight_rpx-60 : buttonHeight_rpx}}rpx; position: fixed; bottom: 0;" bindtap="tapisOn"
+	bindtouchstart="touchstart_isOn"
+	bindtouchend="touchend_isOn"
+	bindtouchmove ="touchend_isOn"
+	bindtouchcancel = "touchend_isOn"
+	><text>点击(开/关)时钟</text></button>
+</view>

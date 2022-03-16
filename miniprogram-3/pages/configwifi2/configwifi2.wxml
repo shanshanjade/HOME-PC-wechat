@@ -1,0 +1,87 @@
+<van-divider contentPosition="left">确认手机已连上“RGB辉光时钟”热点</van-divider>
+<van-cell-group inset>
+  <van-cell title="{{isAPconnected?'已连接':'未连接'}}“RGB辉光时钟”">
+    <block wx:if="{{isAPconnected}}">
+      <van-icon name="good-job" color="red" size="40rpx"/>
+      <van-icon name="good-job" color="red" size="40rpx"/>
+      <van-icon name="good-job" color="red" size="40rpx"/>
+    </block>
+    <block wx:else>
+      <van-button size="mini" type="{{isAPconnected?'primary':'danger'}}" disabled="{{isAPconnected}}" bind:click="connect_AP">点击连接</van-button>
+    </block>
+    
+  </van-cell>
+</van-cell-group>
+  
+<view>
+  <van-divider contentPosition="left">校准时钟</van-divider>
+  <van-cell-group inset>
+    <van-cell title="是否使用网络时间校准时钟" >
+      <switch bindchange="switch_calibrate_change"></switch>
+    </van-cell>
+  </van-cell-group>
+
+
+  <van-divider contentPosition="left">时间制式</van-divider>
+  <van-radio-group value="{{ h12 }}" bind:change="radio_change">
+    <van-cell-group inset>
+      <van-cell title="12小时制" >
+        <van-radio slot="right-icon" checked-color="#04BE02" name="{{true}}"/>
+      </van-cell>
+      <van-cell title="24小时制" >
+        <van-radio slot="right-icon" checked-color="#04BE02" checked name="{{false}}"/>
+      </van-cell>
+    </van-cell-group>
+  </van-radio-group>
+
+  <van-divider contentPosition="left">定时任务</van-divider>
+
+  <van-cell-group inset>
+    <van-cell title="是否打开定时任务" >
+      <switch bindchange="switch_change"></switch>
+    </van-cell>
+    <van-cell title="开启时间" data-name="open" value="{{open_time}}" is-link bind:click="show_popup"/>
+    <van-cell title="关闭时间"  data-name="close" value="{{close_time}}" is-link bind:click="show_popup"/>
+  </van-cell-group>
+
+
+  <van-popup show="{{ popupshow }}" round="{{true}}" position="bottom" bind:close="close_popup">
+    <van-datetime-picker type="time" show-toolbar="{{false}}" bind:input="time_input"/>
+  </van-popup>
+
+  <van-divider contentPosition="left">WiFi配置</van-divider>
+  <van-cell-group inset>
+    <van-field
+      required
+      model:value="{{ ssid }}"
+      label="WiFi名称"
+      placeholder="请输入WiFi名称或者选择WiFi"
+      right-icon="wap-nav"
+      bind:click-icon="show_wifilist"
+    />
+    <van-field
+      required
+      type="password"
+      model:value="{{ pswd }}"
+      label="WiFi密码"
+      placeholder="请输入WiFi密码"
+    />
+  </van-cell-group>
+
+  <van-popup show="{{ wifilistshow }}" round="{{true}}" position="bottom" bind:close="close_popupwifilist">
+    <van-picker columns="{{ wifilist }}" show-toolbar="{{false}}" bind:change="wifilist_input" />
+  </van-popup>
+</view>
+
+
+
+
+<view class="van-button">
+  <van-button type="primary" color="#04BE02" size="large" disabled="{{ !isAPconnected }}" bind:click="click_saveRestart">保存配置并重启</van-button>
+</view>
+
+
+
+
+
+

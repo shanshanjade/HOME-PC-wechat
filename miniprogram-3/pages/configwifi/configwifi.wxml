@@ -1,0 +1,36 @@
+
+<view class="body">
+  <view class="h12">
+    <radio-group bindchange="bindradio_h12">
+      <radio value="{{true}}">12小时制</radio>
+      <radio value="{{false}}">24小时制</radio>
+    </radio-group>
+  </view>
+
+  <view class="timing">
+    <switch>
+      <text>定时打开</text>
+      <picker mode="time" value="12:30" bindchange="bindopentime_picker"><text>{{open_time}}</text></picker>
+    </switch>
+    <switch>
+      <text>定时关闭</text>
+      <picker mode="time" value="12:30" bindchange="bindclosetime_picker"><text>{{close_time}}</text></picker>
+    </switch>
+  </view>
+  
+  <view class="wifi">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="ssid">
+        <text>WIFI名称:</text>
+        <input type="text" name="ssid" placeholder="请输入WIFI名称" value=""/>
+      </view>
+      <view class="pswd">
+        <text>WIFI密码:</text>
+        <input type="password" name="pswd" placeholder="请输入WIFI密码" value=""/>
+      </view>
+      <view class="submit">
+        <button form-type="submit" type="primary">保存WIFI信息</button>
+      </view>
+    </form>
+  </view> 
+</view>

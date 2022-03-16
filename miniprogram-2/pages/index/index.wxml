@@ -1,0 +1,34 @@
+<view class="points-reverse-container">
+  <view class="points-container">
+
+  </view>
+  <view class="reverse-container"></view>
+</view>
+
+<view class="mode-switch-container">
+  <view class="mode-container"></view>
+  <view class="switch-container"></view>
+</view>
+
+
+<view class="container">
+  <van-grid column-num="5" border="{{ false }}">
+    <van-grid-item use-slot wx:for="{{ 3 }}" wx:for-item="index">
+      <van-switch checked="{{ checked }}" disabled="{{ disabled }}" bind:change="onChange" />
+    </van-grid-item>
+  </van-grid>
+  <van-grid column-num="5" border="{{ true }}">
+    <van-grid-item use-slot wx:for="{{ 3 }}" wx:for-item="index">
+      <van-switch checked="{{ checked }}" disabled="{{ disabled }}" bind:change="onChange" />
+    </van-grid-item>
+  </van-grid>
+</view>
+
+<van-row wx:for="{{3}}">
+  <van-col span="6"><van-switch checked="{{ checked }}" disabled="{{ disabled }}" bind:change="onChange" /></van-col>
+  <van-col span="6"><van-switch checked="{{ checked }}" disabled="{{ disabled }}" bind:change="onChange" /></van-col>
+  <van-col span="6"><van-switch checked="{{ checked }}" disabled="{{ disabled }}" bind:change="onChange" /></van-col>
+  <van-col span="6"></van-col>
+</van-row>
+
+<van-button>sad </van-button>

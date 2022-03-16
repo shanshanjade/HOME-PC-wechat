@@ -1,0 +1,147 @@
+.kaiji_info{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10rpx;
+}
+.colorpicker{
+  width: 750rpx;
+  height: 130rpx;
+}
+
+.container{
+  width: 750rpx;
+  height: 300rpx;
+  display: flex;
+  flex-wrap: nowrap;
+}
+
+.switch-container{
+  display: flex;
+  flex-wrap: wrap;
+  width: 500rpx;
+  height: 300rpx;
+  margin: 0;
+  padding-left: 0rpx;
+  padding-top: 25rpx;
+}
+
+.rev-button{
+  width: 250rpx;
+  height: 300rpx;
+  padding-top: 0rpx;
+}
+.rev-button button{
+  margin: 35rpx auto;
+}
+switch{
+  display: flex;
+  margin: 0 auto;
+  padding: 0;
+  height: 80rpx;
+  width: 100rpx;
+}
+.switch-text{
+  display: block;
+  width: 165rpx;
+  margin: 0 auto;
+  text-align: center;
+}
+.switch-text text{
+  display: block;
+  color: darkgrey;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 25rpx;
+  font-weight: lighter;
+}
+
+.swiper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.swiper text{
+  display: flex;
+  font-size: 100rpx;
+  font-weight: bolder;
+  color: blanchedalmond;
+  align-items: center;
+  justify-content: center;
+  height: 150rpx;
+}
+.rev-button text{
+  font-size: 40rpx;
+  color: blanchedalmond;
+  height: auto;
+  width: auto;
+}
+
+.info1{
+  /* margin-top: 20rpx; */
+  text-align: center;
+}
+
+.info1 text{
+  color: rgb(128, 128, 128);
+  font-weight: lighter;
+}
+image {
+  width: 100rpx;
+  height: 100rpx;
+}
+.mode_turnPage_speed{
+  display: flex;
+  margin-top: 10rpx;
+  margin-left: 30rpx;
+}
+
+.mode_turnPage{
+  width: 400rpx;
+}
+
+.mode_turnPage swiper{
+  margin-bottom: 10rpx;
+}
+
+.speed{
+  display: flex;
+  width: 300rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode_turnPage swiper view{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mode_turnPage text {
+  color: blanchedalmond;
+  font-weight: bolder;
+  height: 120rxp;
+  font-size: 50rpx;
+}
+
+.speed button{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 50rpx;
+}
+
+.speed text{
+  width: auto;
+  height: auto;
+  font-size: 50rpx;
+}
+.isOn button{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+.isOn text{
+  color: white;
+  font-size: 40rpx;
+}

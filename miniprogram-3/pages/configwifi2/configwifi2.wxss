@@ -1,0 +1,9 @@
+page {
+  background-color: #f6f6f8;
+}
+
+.van-button van-button{
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
